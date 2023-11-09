@@ -13,7 +13,7 @@ struct Cli {
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     let rfc868_basetime = Utc.with_ymd_and_hms(1900, 1, 1, 0, 0, 0).unwrap();
-    let rt = tokio::runtime::Builder::new_current_thread().build()?;
+    let rt = tokio::runtime::Builder::new_current_thread().enable_io().build()?;
     tracing_subscriber::fmt::init();
     let c = Cli::parse();
 
