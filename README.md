@@ -2,6 +2,11 @@
 
 It's a implementation of "TCP Based Time Service" [Time Protocol [RFC868]](https://datatracker.ietf.org/doc/html/rfc868).
 
+> [!NOTE]
+> For human readable time use the Time Protocol (RFC-867)
+> 
+> for Japanese: [yanorei32/nichijid-rs](https://github.com/yanorei32/nichijid-rs).
+
 
 ## Examples
 
