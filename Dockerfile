@@ -21,7 +21,7 @@ COPY src/ /usr/src/timed-rs/src/
 
 RUN touch src/* && cargo build --release
 
-FROM debian:bullseye-slim@sha256:eba49f684e76d007f9cc1a6376aea65eee5d2e41d6d0481de1c9704d7bd382d8
+FROM debian:bullseye-slim@sha256:43112fc2ced1dc71d4c92a1e42c3f831a2d5840ffa4d9fcd37802cd0594c1edf
 
 WORKDIR /
 
