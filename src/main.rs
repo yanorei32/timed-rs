@@ -3,7 +3,6 @@ use std::net::SocketAddr;
 use chrono::{offset::TimeZone, Utc};
 use clap::Parser;
 use tokio::{io::AsyncWriteExt, net::TcpListener};
-use tracing::info;
 
 #[derive(Debug, Parser)]
 struct Cli {
@@ -20,17 +19,17 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     rt.block_on(async move {
         let listener = TcpListener::bind(c.host).await?;
         let addr = listener.local_addr()?;
-        info!("Server is ready on {addr}");
+        tracing::info!("Server is ready on {addr}");
 
         loop {
             let (mut socket, addr) = listener.accept().await?;
-            info!("Accept request from: {addr}");
+            tracing::info!("Accept request from: {addr}");
 
             tokio::spawn(async move {
                 let current_rfc868_time = (Utc::now() - rfc868_basetime).num_seconds() as i32;
 
                 if let Err(v) = socket.write_all(&current_rfc868_time.to_be_bytes()).await {
-                    info!("Something went wrong: {v}");
+                    tracing::info!("Something went wrong: {v}");
                 };
             });
         }
