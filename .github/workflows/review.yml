@@ -4,6 +4,7 @@ on:
   pull_request:
     paths:
       - 'src/**'
+      - 'rust-toolchain'
       - 'Cargo.toml'
       - 'Cargo.lock'
       - '.github/workflows/review.yml'
